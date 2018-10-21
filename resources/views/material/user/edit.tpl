@@ -54,6 +54,23 @@
 							</div>
 						</div>
 
+                                                <div class="card margin-bottom-no">	
+							<div class="card-main">	
+								<div class="card-inner">	
+									<div class="card-inner">	
+										<p class="card-heading">用户UUID重置</p>
+ 									</div>	
+									<div class="card-action">	
+										<div class="card-action-btn pull-left">	
+											<button class="btn btn-flat waves-attach" id="ss-pwd-update" ><span class="icon">check</span>&nbsp;重置</button>	
+										</div>	
+									</div>	
+								</div>	
+							</div>	
+						</div>	
+                      	
+                    	
+                      
 
 						<div class="card margin-bottom-no">
 							<div class="card-main">
