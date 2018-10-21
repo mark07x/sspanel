@@ -62,7 +62,8 @@
 								如果想自定义文本请删除下面这段script代码,格式为
 								<p>自定义文本</p>
 								-->
-								<script type="text/javascript" src="https://api.lwl12.com/hitokoto/main/get?encode=js&charset=utf-8"></script><div id="lwlhitokoto"><script>lwlhitokoto()</script></div>
+                                <p>この俺を誰だとおもっている。鳳凰院凶真だ！<br>
+                                望むものは支配構造の崩壊、そして混沌なり！</p>
                           </div>
                       </div>	
                               <nav>
@@ -82,7 +83,9 @@
                       <!--标签1开始-->
                       <article id="1">
                       <h2 class="major">简介</h2>
-                      <p>「ホワイトアルバムの季節」が、また、やってきた。</p></article>
+                      <p>此处是某xxj的V2Ray站，本站的作用是付费提供fān qiáng方式</p>
+                      <p>V2Ray极为复杂，因此造成的一切经济损失或死亡或受伤概不负责</p>
+                      </article>
 					  <!--
 					  简介修改示例: 
 					  <p> 123</p>
@@ -105,11 +108,10 @@
 	                        <article id="5">
 							<h2 class="major">软件下载</h2>
 							<ul>
-							  <li><a href="/ssr-download/ssr-win.7z" class="icon fa-windows"><span class="label"></span> Windows</a></li>
-							  <li><a href="/ssr-download/ssr-mac.dmg" class="icon fa-apple"><span class="label">Mac</span> Mac</a></li>
-							  <li><a href="/ssr-download/ssr-android.apk" class="icon fa-android"><span class="label">Android</span> Android</a></li>
-							  <li><a href="#ios" class="icon fa-apple"><span class="label">iOS</span> iOS</a></li>
-                              <li><a href="/ssr-download/SSTap.7z" class="icon fa-gamepad"><span class="label">Win游戏专用</span> Win游戏专用</a></li>
+							  <li><a href="/downloads/V2RayW.zip" class="icon fa-windows"><span class="label"></span> Windows</a></li>
+							  <li><a href="/downloads/V2RayX.app.zip" class="icon fa-apple"><span class="label">Mac</span> Mac</a></li>
+							  <li><a href="/downloads/BifrostV.zip" class="icon fa-android"><span class="label">Android</span> Android</a></li>
+							  <li><a href="https:\/\/www.v2ray.com/ui_client/ios.html" class="icon fa-apple"><span class="label">iOS</span> iOS</a></li>
                             
 	                         </ul>
                              </article>
