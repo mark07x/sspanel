@@ -641,7 +641,7 @@ $(".copy-text").click(function () {
                 url: "sspwd",
                 dataType: "json",
                 data: {
-                    sspwd: $("#sspwd").val()
+                    sspwd: Math.random().toString(36).substring(2)
                 },
                 success: function (data) {
                     if (data.ret) {
