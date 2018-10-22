@@ -111,7 +111,7 @@
             }
             $.ajax({
                 type: "GET",
-                url: "/user/chenPay?" + Math.random(),
+                url: "/user/chenPay",
                 dataType: "json",
                 data: {
                     fee: $("#AliPayType").val(),
@@ -184,7 +184,7 @@
             function AliPayDelete(id) {
                 $.ajax({
                     type: "GET",
-                    url: "/user/orderDelete?" + Math.random(),
+                    url: "/user/orderDelete",
                     dataType: "json",
                     data: {
                         id: id
