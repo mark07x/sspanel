@@ -46,18 +46,24 @@
 							<div class="card">
 								<div class="card-main">
 									<div class="card-inner margin-bottom-no">
-										<p class="card-heading"><i class="icon icon-md">phonelink</i> V2Ray节点链接</p>
+										<p class="card-heading"><i class="icon icon-md">phonelink</i> 快速添加V2Ray节点</p>
 										<div class="card-inner">
 											<nav class="tab-nav margin-top-no">
 												<ul class="nav nav-list">
 													<li class="active">
 														<a class="waves-attach" data-toggle="tab" href="#all_v2ray_info"><i class="icon icon-lg">info_outline</i>&nbsp;连接信息</a>
 													</li>
+													<li>
+														<a class="waves-attach" data-toggle="tab" href="#all_v2ray_announcement"><i class="icon icon-lg">dvr</i>&nbsp;连接教程</a>
+													</li>
 												</ul>
 											</nav>
 											<div class="tab-pane fade active in" id="all_v2ray_info">
 												{$v2_url_all = URL::getAllVMessUrl($user)}
 												<a class="copy-text" data-clipboard-text="{$v2_url_all}">点击这里复制全部 VMess 链接</a>
+											</div>
+											<div class="tab-pane fade" id="all_v2ray_announcement">
+												<a href="/user/announcement">点击这里查看V2Ray连接教程</a>
 											</div>
 										</div>
 									</div>
