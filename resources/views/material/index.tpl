@@ -108,7 +108,7 @@
 	                        <article id="5">
 							<h2 class="major">软件下载</h2>
 							<ul>
-							  <li><a href="/downloads/V2RayW.zip" class="icon fa-windows"><span class="label"></span> Windows</a></li>
+							  <li><a href="/downloads/V2RayN.zip" class="icon fa-windows"><span class="label"></span> Windows</a></li>
 							  <li><a href="/downloads/V2RayX.app.zip" class="icon fa-apple"><span class="label">Mac</span> Mac</a></li>
 							  <li><a href="/downloads/BifrostV.zip" class="icon fa-android"><span class="label">Android</span> Android</a></li>
 							  <li><a href="https:\/\/www.v2ray.com/ui_client/ios.html" class="icon fa-apple"><span class="label">iOS</span> iOS</a></li>
