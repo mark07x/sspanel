@@ -1,5 +1,5 @@
-<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.1"></script>
-<script src="https://mark07.com/jquery-qrcode.min.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/jquery-qrcode.min.js"></script>
 <style>
     .btn-price {
         margin: 5px;
