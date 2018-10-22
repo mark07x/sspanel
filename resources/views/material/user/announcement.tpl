@@ -35,7 +35,7 @@
 										</nav>
                                       
 										<div class="tab-pane fade active in" id="all_v2ray_windows">
-											<p><code><font size="5">1：下载软件</font></code></p>
+											<p><code><font size="5"><a href="/downloads/V2RayN.zip">1：下载软件（点击下载）</a></font></code></p>
 											<p><a href="/downloads/V2RayN.zip"></a></p>
 											<p><img src="/images/c_win_1.jpg" height="400" width="500" /></p>
 											<p><code><font size="5">2：导入节点</font></code></p>
@@ -45,8 +45,7 @@
 										</div>
 										
 										<div class="tab-pane fade" id="all_v2ray_mac">
-											<p><code><font size="5">1：下载软件</font></code></p>
-											<p><a href="/downloads/V2RayX.app.zip"></a></p>
+											<p><code><font size="5"><a href="/downloads/V2RayX.app.zip">1：下载软件（点击下载）</a></font></code></p>
 											<p><img src="/images/c_mac_1.jpg" height="400" width="500" /></p>
 											<p><code><font size="5">2：导入节点</font></code></p>
 											<p><img src="/images/c_mac_2.jpg" height="400" width="500" /></p>
@@ -55,8 +54,7 @@
 										</div>
 										
 										<div class="tab-pane fade" id="all_v2ray_android">
-											<p><code><font size="5">1：下载软件</font></code></p>
-											<p><a href="/downloads/BifrostV.zip"></a></p>
+											<p><code><font size="5"><a href="/downloads/BifrostV.zip">1：下载软件（点击下载）</a></font></code></p>
 											<p><img src="/images/c_android_1.jpg" height="400" width="500" /></p>
 											<p><code><font size="5">2：导入节点</font></code></p>
 											<p><img src="/images/c_android_2.jpg" height="400" width="500" /></p>
