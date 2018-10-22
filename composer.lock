@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "87fa96823272dff9e8f26e57dd788afa",
+    "content-hash": "4f4f522e70664fe23ead42c0de23788a",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1122,16 +1122,16 @@
         },
         {
             "name": "mailgun/mailgun-php",
-            "version": "dev-master",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mailgun/mailgun-php.git",
-                "reference": "3fb0f8210e00d10f91f7bb14d22d6ad504957764"
+                "reference": "952198a5d7e9654a334702c6e63dc8bea5da0ae3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mailgun/mailgun-php/zipball/3fb0f8210e00d10f91f7bb14d22d6ad504957764",
-                "reference": "3fb0f8210e00d10f91f7bb14d22d6ad504957764",
+                "url": "https://api.github.com/repos/mailgun/mailgun-php/zipball/952198a5d7e9654a334702c6e63dc8bea5da0ae3",
+                "reference": "952198a5d7e9654a334702c6e63dc8bea5da0ae3",
                 "shasum": ""
             },
             "require": {
@@ -1170,7 +1170,7 @@
                 }
             ],
             "description": "The Mailgun SDK provides methods for all API functions.",
-            "time": "2018-09-07T20:37:59+00:00"
+            "time": "2018-08-04T20:22:47+00:00"
         },
         {
             "name": "moneyphp/money",
