@@ -57,22 +57,7 @@
 											</nav>
 											<div class="tab-pane fade active in" id="all_v2ray_info">
 												{$v2_url_all = URL::getAllVMessUrl($user)}
-
 												<a class="copy-text" data-clipboard-text="{$v2_url_all}">点击这里复制全部 VMess 链接</a>
-												<!-- <p>
-												<span class="icon icon-lg text-white">flash_auto</span> 
-												单端口节点订阅地址：
-												<input type="text" class="input form-control form-control-monospace" name="input1" readonly value="{$baseUrl}/link/{$ssr_sub_token}?mu=2" readonly="true" />
-												<button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$baseUrl}/link/{$ssr_sub_token}?mu=2">
-													点击拷贝订阅地址
-												</button>
-												<br>
-												</p> -->
-											</div>
-										</div>
-										<div class="card-action">
-											<div class="card-action-btn pull-left">
-												<p><a class="reset-link btn btn-brand btn-flat waves-attach" ><span class="icon">autorenew</span>&nbsp;重置订阅链接</a></p>
 											</div>
 										</div>
 									</div>
