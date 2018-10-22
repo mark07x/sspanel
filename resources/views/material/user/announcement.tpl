@@ -23,7 +23,7 @@
 													<a class="waves-attach" data-toggle="tab" href="#all_v2ray_windows"><i class="icon icon-lg">desktop_windows</i>&nbsp;Windows</a>
 												</li>
 												<li>
-													<a class="waves-attach" data-toggle="tab" href="#all_v2ray_mac"><i class="icon icon-lg">laptop_mac</i>&nbsp;MacOS</a>
+													<a class="waves-attach" data-toggle="tab" href="#all_v2ray_mac"><i class="icon icon-lg">laptop_mac</i>&nbsp;macOS</a>
 												</li>
 												<li>
 													<a class="waves-attach" data-toggle="tab" href="#all_v2ray_android"><i class="icon icon-lg">android</i>&nbsp;Android</a>
@@ -46,9 +46,9 @@
 										
 										<div class="tab-pane fade" id="all_v2ray_mac">
 											<p><code><font size="5"><a href="/downloads/V2RayX.app.zip">1：下载软件（点击下载）</a></font></code></p>
-											<p><img src="/images/c_mac_1.jpg" height="400" width="500" /></p>
+											<p><img src="/images/c_macos_1.jpg" height="400" width="500" /></p>
 											<p><code><font size="5">2：导入节点</font></code></p>
-											<p><img src="/images/c_mac_2.jpg" height="400" width="500" /></p>
+											<p><img src="/images/c_macos_2.jpg" height="400" width="500" /></p>
 											<p><code><font size="5">3：选择节点</font></code></p>
 											<p><img src="/images/c_mac_3.jpg" height="400" width="500" /></p>
 										</div>
