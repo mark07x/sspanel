@@ -1,5 +1,4 @@
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/jquery-qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.1"></script>
 <style>
     .btn-price {
         margin: 5px;
@@ -66,7 +65,8 @@
                     <p id="qrcode">
                         <a class="pay"
                            href="">
-                            <canvas id="qr" width="200" height="200"></canvas>
+                            <img src="/images/loading.gif"
+                                 width="300px"/>
                         </a>
                     </p>
                     <p id="title">支付成功后大约一分钟内提示</p>
@@ -79,8 +79,8 @@
 
 <script>
     function chenPayLoad() {
-        //var $zxing = 'http://mobile.qq.com/qrcode?url=',
-        var $alipay = 'alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=',
+        var $zxing = 'http://mobile.qq.com/qrcode?url=',
+            $alipay = 'alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=',
             $wxpayApp = 'weixin://',
             $pay_type = 0,
             $order_id = 0;
@@ -129,16 +129,11 @@
                         setTimeout(function () {
                             checkPayTime(data.id)
                         }, 1000);
-                            if (data.url) {
-                                if ($type == 2)
-                                    $('.pay').attr('href', $wxpayApp);//.children('img').attr('src', $zxing + data.url);
-                                else $('.pay').attr('href', $alipay + data.url);//.children('img').attr('src', $zxing + data.url);
-                                //$('#qr').qrcode(data.url);
-                               $('#qr').qrcode({
-                                   render:"canvas",
-                                   text:data.url
-                               });
-                            }
+                        if (data.url) {
+                            if ($type == 2)
+                                $('.pay').attr('href', $wxpayApp).children('img').attr('src', $zxing + data.url);
+                            else $('.pay').attr('href', $alipay + data.url).children('img').attr('src', $zxing + data.url);
+                        }
                     } else {
                         $("#result").modal();
                         $("#msg").html(data.msg);
@@ -156,17 +151,11 @@
                     },
                     success: function (data) {
                         if (data.ret) {
-                            /*if (data.url) {
+                            if (data.url) {
                                 if ($type == 2)
-                                    $('.pay').attr('href', $wxpayApp);//.children('img').attr('src', $zxing + data.url);
-                                else $('.pay').attr('href', $alipay + data.url);//.children('img').attr('src', $zxing + data.url);
-                                //$('#qr').qrcode(data.url);
-                               $('#qr').attr('height', '200');
-                               $('#qr').qrcode({
-                                   render:"canvas",
-                                   text:data.url
-                               });
-                            }*/
+                                    $('.pay').attr('href', $wxpayApp).children('img').attr('src', $zxing + data.url);
+                                else $('.pay').attr('href', $alipay + data.url).children('img').attr('src', $zxing + data.url);
+                            }
                             if (data.status == 1) {
                                 close('充值成功！');
                                 setTimeout(function () {
@@ -194,46 +183,28 @@
                 });
             }
 
-            $('#AliPayReadyToPay').on('hide.bs.modal', function () {
+            $('#AliPayReadyToPayClose').unbind('click').click(function () {
                 if (CheckPayTimeId) clearTimeout(CheckPayTimeId);
                 if ($id) clearInterval($id);
                 AliPayDelete($order_id);
-                //$('.pay').attr('href', '').children('img').attr('src', '/images/loading.gif');
-                $('#qr').attr('height', '200');
+                $('.pay').attr('href', '').children('img').attr('src', '/images/loading.gif');
             });
-
-            /*$('#AliPayReadyToPayClose').unbind('click').click(function () {
-                if (CheckPayTimeId) clearTimeout(CheckPayTimeId);
-                if ($id) clearInterval($id);
-                AliPayDelete($order_id);
-                //$('.pay').attr('href', '').children('img').attr('src', '/images/loading.gif');
-                $('#qr').attr('height', '200');
-            });*/
 
             function close($msg) {
                 if (CheckPayTimeId) clearTimeout(CheckPayTimeId);
-                if ($id) clearInterval($id);
-                //$('.pay').attr('href', '').children('img').attr('src', '/images/loading.gif');
-                $('#qr').attr('height', '200');
+                if ($id) clearInterval($id)
+                $('.pay').attr('href', '').children('img').attr('src', '/images/loading.gif');
                 $("#AliPayReadyToPay").modal('hide');
                 $("#result").modal();
                 $("#msg").html($msg);
             }
 
-            var m = 0, s = 59, countdown = document.getElementById("countTime");
-            var ft = 0;
+            var m = 2, s = 59, countdown = document.getElementById("countTime");
 
             function getCountdown() {
                 countdown.innerHTML = "<span>" + (m >= 10 ? m : '0' + m) + "</span>:<span>" + (s >= 10 ? s : '0' + s) + "</span>";
                 if (m == 0 && s == 0) {
-                    if (ft == 1)
-                        close('倒计时结束了');
-                    else {
-                        ft = 1;
-                        s = 14;
-                        $("#result").modal();
-                        $("#msg").html("正在验证支付状态");
-                    }
+                    close('倒计时结束了');
                 } else if (m >= 0) {
                     if (s > 0) {
                         s--;

@@ -102,7 +102,7 @@ class ChenPay extends AbstractPayment
             $newOrder = new Paylist();
             $newOrder->userid = $user->id;
             $newOrder->total = $amount;
-            $newOrder->datetime = time() + 75; // 有效时间
+            $newOrder->datetime = time() + 3 * 60; // 有效时间
             $newOrder->tradeno = rand(100000, 999999) . $user->id . $newOrder->datetime;
             $newOrder->type = $type;
             $newOrder->url = $url;
