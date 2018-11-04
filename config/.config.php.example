@@ -58,7 +58,7 @@ $System_Config['auto_backup_passwd']='';	//备份的压缩密码
 
 
 //用户注册设置-----------------------------------------------------------------------------------------
-$System_Config['register_mode'] = 'close';					//注册模式。close：关闭，open：开放，invite：仅限邀请码
+$System_Config['register_mode'] = 'open';					//注册模式。close：关闭，open：开放，invite：仅限邀请码
 $System_Config['defaultTraffic'] = '1';						//用户初始流量 单位GB
 $System_Config['user_expire_in_default']='3650';			//用户账户过期时间，在注册时设置。（天）
 $System_Config['user_class_default']='0';					//用户注册等级，在注册时设置。
@@ -150,9 +150,14 @@ $System_Config['enable_geetest_reg']='false';		//启用注册验证码
 $System_Config['enable_geetest_login']='false';		//启用登录验证码
 $System_Config['enable_geetest_checkin']='false';	//启用签到验证码
 
+//界面设置
+
+$System_Config['enable_shop_uiswitch'] = '1'; //默认启用卡片式商店或列表商店，1为卡片式，0为列表
+$System_Config['number_viplevel'] = '1'; //节点自动化显示，输入要显示的最高节点等级
+
 
 //支付系统设置----------------------------------------------------------------------------------------
-#取值 none,codepay,doiampay,paymentwall,zfbjk,spay,f2fpay,yftpay,f2fpay_codepay,chenAlipay
+#取值 none | codepay | doiampay | trimepay | f2fpay | yftpay | chenAlipay | paymentwall | spay | f2fpay_codepay 
 $System_Config['payment_system']='none';
 
 #codepay码支付
@@ -212,7 +217,7 @@ $System_Config['zfbjk_pid']='';
 $System_Config['zfbjk_key']='';
 $System_Config['zfbjk_qrcodeurl']='';
 
-#Trimepay
+#Trimepay https://portal.trimepay.com
 $System_Config['trimepay_appid']='';		//AppID
 $System_Config['trimepay_secret']='';		//AppSecret
 

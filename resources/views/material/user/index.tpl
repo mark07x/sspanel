@@ -16,7 +16,7 @@
 			<section class="content-inner margin-top-no">
 				<div class="ui-card-wrap">
 
-						<div class="col-lg-6 col-md-6">
+						<div class="col-xx-12 col-sm-8">
 
 							<div class="card">
 								<div class="card-main">
@@ -73,7 +73,7 @@
 
 						</div>
 
-						<div class="col-lg-6 col-md-6">
+						<div class="col-xx-12 col-sm-4">
 
 							<div class="card">
 								<div class="card-main">
@@ -145,13 +145,20 @@
 
 
 									<div class="card-action">
-										<div class="card-action-btn pull-left">
+										<div class="usercheck pull-left">
 											{if $user->isAbleToCheckin() }
-												<p id="checkin-btn">
-													<button id="checkin" class="btn btn-brand btn-flat waves-attach"><span class="icon">check</span>&nbsp;点我签到&nbsp;<span class="icon">screen_rotation</span>&nbsp;或者摇动手机签到</button>
-												</p>
+											
+												<div id="checkin-btn">
+													<button id="checkin" class="btn btn-brand btn-flat waves-attach"><span class="icon">check</span>&nbsp;点我签到&nbsp;</button>
+													<div><span class="icon">screen_rotation</span>&nbsp;或者摇动手机签到</div>
+												</div>
+												
+											
 											{else}
+										
 												<p><a class="btn btn-brand disabled btn-flat waves-attach" href="#"><span class="icon">check</span>&nbsp;今日已签到</a></p>
+										
+												
 											{/if}
 										</div>
 									</div>
@@ -163,11 +170,11 @@
 
 							<div class="card">
 								<div class="card-main">
-									<div class="card-inner margin-bottom-no">
+									<div class="card-inner">
 
-										<div id="traffic_chart" style="height: 300px; width: 100%;"></div>
+										{*<div id="traffic_chart" style="height: 300px; width: 100%;"></div>
 
-                                      <script src="/assets/js/canvasjs.min.js"> </script>
+                                       <script src="/assets/js/canvasjs.min.js"> </script>
 										<script type="text/javascript">
 											var chart = new CanvasJS.Chart("traffic_chart",
 
@@ -215,7 +222,30 @@
 											});
 
 											chart.render();
-										</script>
+										</script> *}
+
+										<div class="progressbar">
+	                                         <div class="before"></div>
+	                                         <div class="bar tuse color3" style="width:calc({($user->u+$user->d-$user->last_day_t)/$user->transfer_enable*100}% - 44px);)"><span></span></div>
+											 <div class="label-flex">
+												<div class="label la-top"><div class="bar ard color3"><span></span></div>今日已用 {$user->TodayusedTraffic()}</div>
+											 </div>
+										</div>
+										<div class="progressbar">
+										    <div class="before"></div>
+										    <div class="bar ard color2" style="width:calc({$user->last_day_t/$user->transfer_enable*100}% - 44px);)"><span></span></div>
+										    <div class="label-flex">
+										       <div class="label la-top"><div class="bar ard color2"><span></span></div>过去已用 {$user->LastusedTraffic()}</div>
+										    </div>
+								        </div>
+										<div class="progressbar">
+											<div class="before"></div>
+											<div class="bar remain color" style="width:calc({($user->transfer_enable-($user->u+$user->d))/$user->transfer_enable*100}% - 44px);)"><span></span></div>
+											<div class="label-flex">
+											   <div class="label la-top"><div class="bar ard color"><span></span></div>剩余流量 {$user->unusedTraffic()}</div>
+											</div>
+									   </div>
+									   
 
 									</div>
 
@@ -275,6 +305,8 @@
 {include file='user/footer.tpl'}
 
 <script src="https://cdn.jsdelivr.net/npm/shake.js@1.2.2/shake.min.js"></script>
+
+
 
 <script>
 
@@ -468,6 +500,7 @@ initGeetest({
 
 
 {/if}
+
 
 
 </script>
