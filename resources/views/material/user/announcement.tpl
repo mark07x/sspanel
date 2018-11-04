@@ -16,7 +16,7 @@
 							<div class="card">
 								<div class="card-main">
                                   
-									<div class="card-inner margin-bottom-no">
+									<div class="card-inner margin-bottom-no ">
 										<nav class="tab-nav margin-top-no">
 											<ul class="nav nav-list">
 												<li class="active">
