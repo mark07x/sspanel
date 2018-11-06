@@ -235,7 +235,7 @@
 										<p>IP 段请使用 |127.0.0.0/8 类似格式表示</p>
 										<div class="form-group form-group-label">
 											<label class="floating-label" for="pac">规则书写区</label>
-											<textarea class="form-control maxwidth-edit" id="pac" rows="8">{$user->pac}</textarea>
+											<code contenteditable="true" class="form-control maxwidth-edit" id="pac">{$user->pac}</code>
 										</div>
 
 									</div>
@@ -249,24 +249,27 @@
 							<div class="card-main">
 								<div class="card-inner">
 									<div class="card-inner">
+									{if $user->telegram_id != 0}
 										<div class="cardbtn-edit">
 												<div class="card-heading">Telegram 绑定</div>
 												<div><a class="btn btn-flat btn-brand-accent waves-attach" href="/user/telegram_reset"><span class="icon">not_interested</span>&nbsp;</a></div>
-										</div>
+										</div>{/if}
+                                      {if $user->telegram_id == 0}
 										<p>Telegram 添加机器人账号 <a href="https://t.me/{$telegram_bot}">@{$telegram_bot}</a>，拍下下面这张二维码发给它。</p>
 										<div class="form-group form-group-label">
 											<div class="text-center">
 												<div id="telegram-qr"></div>
-												{if $user->telegram_id != 0}当前绑定：<a href="https://t.me/{$user->im_value}">@{$user->im_value}</a>{/if}
-											</div>
-										</div>
-
-									</div>
-								</div>
-							</div>
-						</div>
+												{elseif $user->telegram_id != 0}
+												当前绑定Telegram账户：<a href="https://t.me/{$user->im_value}">@{$user->im_value}</a>
+												{/if}
+									        </div>
+									    </div>
+								    </div>
+							    </div>
+						    </div>
+					    </div>
 						{/if}
-					</div>
+					
 
 
 

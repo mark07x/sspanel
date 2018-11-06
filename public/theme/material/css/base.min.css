@@ -2288,7 +2288,7 @@ img {
 		  margin: 0;
 	  }
 }
-.copy-text.btn-subscription:hover {
+.copy-text.btn-subscription:hover,.reset-invitelink:hover {
     color: white;
 }
 .kaobei {
@@ -2383,7 +2383,10 @@ img {
 .fbtn:active,.fbtn:focus,.fbtn:hover {
 	color: #212121;
 	outline: 0;
-	text-decoration: none
+	text-decoration: none;
+	transition-duration: 0.4s;
+	border-radius: 10px;
+	transition-property: all;
 }
 
 .fbtn:after {
@@ -2770,6 +2773,15 @@ z-index: -1
 .card-inner {
 margin: 24px 16px
 }
+.card-doubleinner {
+	margin: 24px 16px 0 16px; 
+}
+.card-relayinner {
+	margin: 24px 0 0 0;
+}
+.card-relayinner>.tab-nav {
+	margin-bottom: 0;
+}
 
 .card-header .card-inner {
 -webkit-box-flex: 1;
@@ -2878,7 +2890,7 @@ padding: 0
 
 pre {
 border: 1px solid #dadada;
-border-radius: 2px;
+border-radius: 15px;
 color: #212121;
 display: block;
 font-size: 12px;
@@ -5178,6 +5190,21 @@ input[type=checkbox]:checked+.switch-toggle-red:active:after,input[type=radio]:c
 	width: 100%
 }
 
+.table-responsive.table-user {
+	border-radius: 0;
+	box-shadow: none;
+	margin-top: 0;
+}
+
+.table-responsive.table-user th,.table.table-user th {
+	background: #f6f9fc;
+	border-radius: 0;
+}
+
+.table-responsive.table-user th,.table-responsive.table-user td,.table.table-user th,.table.table-user td {
+	padding: 13px 16px 14px 32px;
+}
+
 .card-table>.table {
 	box-shadow: none;
 	margin-right: -16px;
@@ -5206,6 +5233,7 @@ input[type=checkbox]:checked+.switch-toggle-red:active:after,input[type=radio]:c
 	line-height: 20px;
 	padding: 13px 16px 14px;
 	vertical-align: middle;
+	white-space: nowrap;
 }
 
 .table td.nowrap,.table th.nowrap {
@@ -6135,9 +6163,15 @@ html.no-touchevents .tile-action-show,html.no-touchevents .tile:hover .tile-acti
 
 /* 卡片式商店样式 */
 
-.shop-switch {
+.ui-switch {
 	display: flex;
 	flex-direction: row-reverse;
+}
+.ui-switch.node-switch {
+	position: absolute;
+	right: 2.5em;
+	top: 1.5em;
+	z-index: 1;
 }
 
 .switch-btn {
@@ -6145,55 +6179,74 @@ html.no-touchevents .tile-action-show,html.no-touchevents .tile:hover .tile-acti
 	box-sizing: border-box;
 }
 
-.shop-switch a {
+.ui-switch a {
 	color: #000;
 	display: inline-block;
 	padding: 0 10px;
 }
 
-.shop-switch div.switch-btn:first-of-type a {
+.ui-switch div.switch-btn:first-of-type a {
 	border-radius: 0 15px 15px 0;
 }
-
-.shop-switch div.switch-btn:last-of-type a {
-	border-radius: 15px 0 0 15px;
+.ui-switch div.switch-btn:first-of-type a:hover {
+	border-radius: 0 5px 5px 0;
+	transition-duration: 0.4s;	
 }
 
-.shop-switch a:hover {
+.ui-switch div.switch-btn:last-of-type a {
+	border-radius: 15px 0 0 15px;
+}
+.ui-switch div.switch-btn:last-of-type a:hover {
+	border-radius: 5px 0 0 5px;
+	transition-duration: 0.4s;	
+}
+
+.ui-switch a:hover {
 	color: white;
 	background: gray;
 }
 
-.shop-switch a i {
+.ui-switch a i {
 	position: relative;
 	top: 3px;
 }
 
-.shop-switch .card,.shop-switch .card-inner {
+.ui-switch .card,.ui-switch .card-inner {
 	margin: 0;
 }
 
 .shop-flex .card {
 	width: 24%;
 	text-align: center;
-	min-height: 330px;
+	min-height: 380px;
 }
 
-.shop-btn,.shop-price,.shop-content {
-    margin-top: 2em;
+.shop-name,.shop-price {
+    padding: 1em 0;
+}
+.shop-price {
+	border-top: 1px solid #a7a7a7;
+	border-bottom: 1px solid #a7a7a7;
+	background: #f6f9fc;
+}
+.shop-content div {
+	margin-bottom: .5em; 
 }
 
 .shop-content {
+	margin-top: 1.5em;
 	font-size: 13px;
 }
 
 .shop-name {
+	margin-top: .3em;
 	font-size: 20px;
 }
 
 .shop-btn {
+	margin-top: 1em;
 	padding: 10px 2em;
-	width: 80%;
+	width: 70%;
 }
 
 .flex-fix3,.flex-fix4 {
@@ -6286,11 +6339,11 @@ html.no-touchevents .tile-action-show,html.no-touchevents .tile:hover .tile-acti
 }
 .cardbtn-edit .card-heading {
 	margin-bottom: 0;
-	margin-top: 15px;
+	margin-top: 8px;
 }
 .cardbtn-edit .btn-flat {
 	border-radius: 50%;
-	background: #999999;
+	background: #666;
 	width: 50px;
 	height: 50px;
 	color: white;
@@ -6361,6 +6414,14 @@ html.no-touchevents .tile-action-show,html.no-touchevents .tile:hover .tile-acti
 	align-items: center;
 }
 
+code.form-control {
+	min-height: 200px;
+}
+
+.codepay button {
+	padding-left: 0;
+}
+
 @media screen and (max-width:430px) {
     .reset-flex {
 		display: flex;
@@ -6380,6 +6441,144 @@ html.no-touchevents .tile-action-show,html.no-touchevents .tile:hover .tile-acti
 		margin: 1em 0 0 0;
 	}
 }
+
+/* 卡片节点 */
+
+.nodelist {
+	position: relative;
+}
+
+.card-row {
+    display: flex;
+    justify-content: space-between;
+	flex-wrap: wrap;
+	position: relative;
+}
+
+.card-node {
+    position: relative;
+    left: 0;
+    top: 0;
+    background: white;
+    width: 430px;
+    height: 120px;
+    border-radius: 10px;
+	box-shadow: 2px 2px 7px 1px rgb(189, 189, 189);
+	margin-top: 2em;
+}
+
+.flag img {
+    width: 35px;
+}
+
+.node-flex {
+    display: flex;
+}
+
+.card-node {
+    justify-content: space-between;
+    padding: 0 1em;
+}
+/* .card-node:hover {
+    height: 20vh;
+    transition-duration: 0.3s;
+    transition-property: all;
+    left: 49%;
+    top: 95px;
+} */
+
+.nodemain>div {
+    margin-top: 13px;
+}
+
+.nodeonline {
+    background: #4fd69c;
+}
+
+.nodeoffline {
+	background: #ea4c4c;
+}
+
+.nodeunset {
+	background: #666;
+}
+
+.nodestatus>div {
+    padding: 1em;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: relative;
+    top: .8em;
+}
+
+.nodehead>div,.nodemiddle>div,.nodeinfo>div {
+    margin-right: 10px;
+}
+
+.nodestatus i {
+    position: relative;
+    font-size: 35px;
+    bottom: 3px;
+    right: 2.5px;
+    color: white;
+}
+
+.nodeunset i {
+	bottom: 0;
+}
+.nodeoffline i {
+	bottom: 1.5px;
+	right: 1px;
+}
+
+.nodemiddle {
+    align-items: flex-end;
+}
+
+.nodetype {
+    font-size: 12px;
+    color: rgb(190, 190, 190);
+    font-weight: bold;
+}
+
+.nodehead {
+	height: 23.5px;
+}
+
+.nodetitle {
+	flex-basis: 100%;
+}
+div.nodetitle:first-of-type>div {
+	margin-top: 0;
+}
+.nodetitle div {
+	position: relative;
+    left: 0;
+    top: 0;
+    background: white;
+    width: 210px;
+    height: 50px;
+    border-radius: 30px 10px 10px 10px;
+	box-shadow: 2px 2px 7px 1px rgb(189, 189, 189);
+	margin-top: 2em;
+	text-align: center;
+}
+.nodetitle div span {
+	font-size: 20px;
+	position: relative;
+	top: .8em;
+}
+
+.onlinemember,.nodetraffic,.nodecheck,.nodehead,.nodeband {
+    align-items: center;
+}
+
+.onlinemember span,.nodetraffic span,.nodecheck span,.nodeband span {
+    margin-left: 5px;
+    font-size: 15px;
+}
+
 
 @media screen and (min-width:1440px) {
 	.hidden-lg {
