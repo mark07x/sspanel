@@ -13,7 +13,9 @@
 	<link href="/theme/material/css/project.min.css" rel="stylesheet">
 	<link href="https://fonts.loli.net/css?family=Roboto:300,300italic,400,400italic,500,500italic" rel="stylesheet">
 	<link href="https://fonts.loli.net/css?family=Material+Icons" rel="stylesheet">
-
+    <!-- jquery -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1"></script>
+	<script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs@gh-pages/qrcode.min.js"></script>
  <style>
     body {
         background: #eee;
@@ -286,7 +288,7 @@
 			font-weight: 300;
 			color: #fff;
 		}
-		
+
 		.reset-invitelink {
 			margin-left: 1em;
 		}
@@ -361,7 +363,7 @@
 	top:12px;
 	left:22px;
 	background:rgb(126,234,25);
-	
+
 	border-radius:16px;
 	box-shadow:0px 0px 12px 0px rgba(126, 234, 25, 1),inset 0px 1px 0px 0px rgba(255, 255, 255, 0.45),inset 1px 0px 0px 0px rgba(255, 255, 255, 0.25),inset -1px 0px 0px 0px rgba(255, 255, 255, 0.25);
 	overflow:hidden;
@@ -373,7 +375,7 @@
 	left: 0;
 	margin-right: 5px;
 	width: 16px;
-	
+
 }
 .progressbar .label .bar.color {
 	box-shadow:0px 0px 5px 0px rgba(126, 234, 25, 1),inset 0px 1px 0px 0px rgba(255, 255, 255, 0.45),inset 1px 0px 0px 0px rgba(255, 255, 255, 0.25),inset -1px 0px 0px 0px rgba(255, 255, 255, 0.25);
@@ -389,17 +391,17 @@
 }
 .progressbar .bar.color2 {
 	background:rgb(229,195,25);
-	
+
 	box-shadow:0px 0px 12px 0px rgba(229, 195, 25, 1),inset 0px 1px 0px 0px rgba(255, 255, 255, 0.45),inset 1px 0px 0px 0px rgba(255, 255, 255, 0.25),inset -1px 0px 0px 0px rgba(255, 255, 255, 0.25);
 }
 .progressbar .bar.color3 {
 	background:rgb(255, 104, 149);
-	
+
 	box-shadow:0px 0px 7px 0px rgba(232, 25, 87, 1), 0px 1px 0px 0px rgba(255, 255, 255, 0.45), 1px 0px 0px 0px rgba(255, 255, 255, 0.25), -1px 0px 0px 0px rgba(255, 255, 255, 0.25);
 }
 .progressbar .bar.color4 {
 	background:rgb(24,109,226);
-	
+
 	box-shadow:0px 0px 12px 0px rgba(24, 109, 226, 1),inset 0px 1px 0px 0px rgba(255, 255, 255, 0.45),inset 1px 0px 0px 0px rgba(255, 255, 255, 0.25),inset -1px 0px 0px 0px rgba(255, 255, 255, 0.25);
 }
 .progressbar .bar:before {
@@ -553,7 +555,7 @@
 									<i class="icon icon-lg">loyalty</i>&nbsp;邀请链接
 								</a>
 							</li>
-							
+
 						</ul>
 
 
