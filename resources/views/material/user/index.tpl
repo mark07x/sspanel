@@ -21,7 +21,7 @@
 							<div class="card">
 								<div class="card-main">
 									<div class="card-inner margin-bottom-no">
-                                    <p class="card-heading"> <i class="icon icon-md">notifications_active</i>公告栏</p>									 
+                                    <p class="card-heading"> <i class="icon icon-md">notifications_active</i>公告栏</p>
 										{if $ann != null}
 										<p>{$ann->content}</p>
 										{/if}
@@ -147,18 +147,18 @@
 									<div class="card-action">
 										<div class="usercheck pull-left">
 											{if $user->isAbleToCheckin() }
-											
+
 												<div id="checkin-btn">
 													<button id="checkin" class="btn btn-brand btn-flat waves-attach"><span class="icon">check</span>&nbsp;点我签到&nbsp;</button>
 													<div><span class="icon">screen_rotation</span>&nbsp;或者摇动手机签到</div>
 												</div>
-												
-											
+
+
 											{else}
-										
+
 												<p><a class="btn btn-brand disabled btn-flat waves-attach" href="#"><span class="icon">check</span>&nbsp;今日已签到</a></p>
-										
-												
+
+
 											{/if}
 										</div>
 									</div>
@@ -245,7 +245,7 @@
 											   <div class="label la-top"><div class="bar ard color"><span></span></div>剩余流量 <code>{$user->unusedTraffic()}</code></div>
 											</div>
 									   </div>
-									   
+
 
 									</div>
 
@@ -503,4 +503,3 @@ initGeetest({
 
 
 </script>
-

@@ -146,9 +146,6 @@
                             </div>
                             <div class="modal-inner">
                                 <p id="title">感谢您对我们的支持，请耐心等待</p>
-                                {if $config["payment_system"] != "trimepay"}
-                                <img src="/images/qianbai-2.png" height="200" width="200" />
-                                {/if}
                             </div>
                         </div>
                     </div>
@@ -159,6 +156,8 @@
         </section>
     </div>
 </main>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs@gh-pages/qrcode.min.js"></script>
 <script>
 	$(document).ready(function () {
 		$("#code-update").click(function () {

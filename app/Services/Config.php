@@ -20,6 +20,7 @@ class Config
     {
         return [
             "appName" => self::get("appName"),
+            "appStartTime" => self::get("appStartTime"),
             "version" => VERSION,
             "baseUrl" => self::get("baseUrl"),
 			"min_port" => self::get("min_port"),
@@ -49,7 +50,7 @@ class Config
 			"register_mode" => self::get("register_mode"),
             "enable_flag" => self::get("enable_flag"),
             "enable_shop_uiswitch" => self::get("enable_shop_uiswitch"),
-            "number_viplevel" => self::get("number_viplevel"),
+            "enable_node_uiswitch" => self::get("enable_node_uiswitch"),
             "enable_kill" => self::get("enable_kill")
          ];
     }

@@ -624,10 +624,10 @@ $(".copy-text").click(function () {
                     if (data.ret) {
                         $("#result").modal();
 						$("#ajax-user-passwd").html($("#sspwd").val());
-						$("#msg").html("成功了");
+						$("#msg").html("修改成功");
                     } else {
                         $("#result").modal();
-						$("#msg").html("失败了");
+						$("#msg").html("修改失败");
                     }
                 },
                 error: function (jqXHR) {
@@ -711,9 +711,10 @@ $(".copy-text").click(function () {
                     method: $("#method").val()
                 },
                 success: function (data) {
+					$("#ajax-user-method").html($("#method").val());
                     if (data.ret) {
                         $("#result").modal();
-						$("#msg").html("成功了");
+						$("#msg").html("修改成功");
                     } else {
                         $("#result").modal();
 						$("#msg").html(data.msg);
