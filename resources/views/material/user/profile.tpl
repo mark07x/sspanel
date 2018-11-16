@@ -16,7 +16,7 @@
 			</div>
 		</div>
 		<div class="container">
-			<section class="content-inner">
+			<section class="content-inner margin-top-no">
 				<div class="row">
 					<div class="col-lg-12 col-md-12">
 						<div class="card margin-bottom-no">
@@ -49,7 +49,7 @@
 									</div>
 									<div class="card-table">
 										<div class="table-responsive table-user">
-											<table class="table">
+											<table class="table table-fixed">
 												<tr>
 
 													<th>IP</th>
@@ -79,7 +79,7 @@
 									</div>
 									<div class="card-table">
 										<div class="table-responsive table-user">
-											<table class="table">
+											<table class="table table-fixed">
 												<tr>
 
 													<th>IP</th>

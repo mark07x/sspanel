@@ -149,8 +149,9 @@
 											{if $user->isAbleToCheckin() }
 
 												<div id="checkin-btn">
-													<button id="checkin" class="btn btn-brand btn-flat waves-attach"><span class="icon">check</span>&nbsp;点我签到&nbsp;</button>
+													<button id="checkin" class="btn btn-brand btn-flat waves-attach"><span class="icon">check</span>&nbsp;点我签到&nbsp;
 													<div><span class="icon">screen_rotation</span>&nbsp;或者摇动手机签到</div>
+													</button>
 												</div>
 
 
@@ -377,7 +378,7 @@ window.onload = function() {
 
 {if $geetest_html == null}
 
-
+var checkedmsgGE = '<p><a class="btn btn-brand disabled btn-flat waves-attach" href="#"><span class="icon">check</span>&nbsp;已签到</a></p>';
 window.onload = function() {
     var myShakeEvent = new Shake({
         threshold: 15
@@ -399,7 +400,7 @@ window.onload = function() {
                 dataType: "json",
                 success: function (data) {
                     $("#checkin-msg").html(data.msg);
-                    $("#checkin-btn").hide();
+                    $("#checkin-btn").html(checkedmsgGE);
 					$("#result").modal();
                     $("#msg").html(data.msg);
                 },
@@ -420,7 +421,7 @@ $(document).ready(function () {
 			dataType: "json",
 			success: function (data) {
 				$("#checkin-msg").html(data.msg);
-				$("#checkin-btn").hide();
+				$("#checkin-btn").html(checkedmsgGE);
 				$("#result").modal();
 				$("#msg").html(data.msg);
 			},
@@ -472,7 +473,7 @@ var handlerPopup = function (captchaObj) {
 			},
 			success: function (data) {
 				$("#checkin-msg").html(data.msg);
-				$("#checkin-btn").hide();
+				$("#checkin-btn").html(checkedmsgGE);
 				$("#result").modal();
 				$("#msg").html(data.msg);
 			},
@@ -483,7 +484,7 @@ var handlerPopup = function (captchaObj) {
 		});
 	});
 	// 弹出式需要绑定触发验证码弹出按钮
-	captchaObj.bindOn("#checkin");
+	//captchaObj.bindOn("#checkin")
 	// 将验证码加到id为captcha的元素里
 	captchaObj.appendTo("#popup-captcha");
 	// 更多接口参考：http://www.geetest.com/install/sections/idx-client-sdk.html

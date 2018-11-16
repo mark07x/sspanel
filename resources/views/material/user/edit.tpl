@@ -199,7 +199,7 @@
 
 										<div class="form-group form-group-label">
 											<div class="text-center">
-												<div id="ga-qr"></div>
+												<div id="ga-qr" class="qr-center"></div>
 												密钥：{$user->ga_token}
 											</div>
 										</div>
@@ -258,7 +258,7 @@
 										<p>Telegram 添加机器人账号 <a href="https://t.me/{$telegram_bot}">@{$telegram_bot}</a>，拍下下面这张二维码发给它。</p>
 										<div class="form-group form-group-label">
 											<div class="text-center">
-												<div id="telegram-qr"></div>
+												<div id="telegram-qr" class="qr-center"></div>
 												{elseif $user->telegram_id != 0}
 												当前绑定Telegram账户：<a href="https://t.me/{$user->im_value}">@{$user->im_value}</a>
 												{/if}
@@ -414,18 +414,17 @@ $(".copy-text").click(function () {
     })
 </script>
 
-<script src=" /assets/public/js/jquery.qrcode.min.js "></script>
 <script>
-	var ga_qrcode = '{$user->getGAurl()}';
-	jQuery('#ga-qr').qrcode({
-		"text": ga_qrcode
-	});
+	var ga_qrcode = '{$user->getGAurl()}',
+        qrcode1 = new QRCode(document.getElementById("ga-qr"));
+    qrcode1.clear();
+    qrcode1.makeCode(ga_qrcode);
 
 	{if $config['enable_telegram'] == 'true'}
-	var telegram_qrcode = 'mod://bind/{$bind_token}';
-	jQuery('#telegram-qr').qrcode({
-		"text": telegram_qrcode
-	});
+	var telegram_qrcode = 'mod://bind/{$bind_token}',
+        qrcode2 = new QRCode(document.getElementById("telegram-qr"));
+    qrcode2.clear();
+    qrcode2.makeCode(telegram_qrcode);
 	{/if}
 </script>
 
