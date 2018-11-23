@@ -59,56 +59,6 @@
                     	
                       
 
-						<div class="card margin-bottom-no">
-							<div class="card-main">
-								<div class="card-inner">
-									<div class="card-inner">
-										<div class="cardbtn-edit">
-												<div class="card-heading">联络方式修改</div>
-												<button class="btn btn-flat waves-attach" id="wechat-update"><span class="icon">check</span>&nbsp;</button>
-										</div>
-										<p>当前联络方式：
-										<code id="ajax-im">
-										{if $user->im_type==1}
-										微信
-										{/if}
-
-										{if $user->im_type==2}
-										QQ
-										{/if}
-
-										{if $user->im_type==3}
-										Google+
-										{/if}
-
-										{if $user->im_type==4}
-										Telegram
-										{/if}
-										{$user->im_value}
-										</code>
-										</p>
-										<div class="form-group form-group-label">
-											<label class="floating-label" for="imtype">选择您的联络方式</label>
-											<select class="form-control maxwidth-edit" id="imtype">
-												<option></option>
-												<option value="1">微信</option>
-												<option value="2">QQ</option>
-												<option value="3">Google+</option>
-												<option value="4">Telegram</option>
-											</select>
-										</div>
-
-										<div class="form-group form-group-label">
-											<label class="floating-label" for="wechat">在这输入联络方式账号</label>
-											<input class="form-control maxwidth-edit" id="wechat" type="text">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-
-
 
 						<div class="card margin-bottom-no">
 							<div class="card-main">
@@ -118,20 +68,23 @@
 												<div class="card-heading">主题修改</div>
 												<button class="btn btn-flat waves-attach" id="theme-update"><span class="icon">check</span>&nbsp;</button>
 										</div>
-										<p>当前主题：{$user->theme}</p>
-										<div class="form-group form-group-label">
+										<p>当前主题：<code data-default="theme">{$user->theme}</code></p>
+										<div class="form-group form-group-label control-highlight-custom dropdown">
 											<label class="floating-label" for="theme">主题</label>
-											<select id="theme" class="form-control maxwidth-edit">
+											<button id="theme" type="button" class="form-control maxwidth-edit" data-toggle="dropdown" value="{$user->theme}">
+												
+											</button>
+											<ul class="dropdown-menu" aria-labelledby="mail">
 												{foreach $themes as $theme}
-													<option value="{$theme}">{$theme}</option>
+												<li><a href="#" class="dropdown-option" onclick="return false;" val="{$theme}" data="theme">{$theme}</a></li>
 												{/foreach}
-											</select>
+											</ul>
 										</div>
-								</div>
-							</div>
-						</div> 
-                    </div>
-				</div>  
+								        </div>
+							        </div>
+						        </div> 
+                            </div>
+				        </div>  
 
 
 					<div class="col-xx-12 col-sm-6">
@@ -162,13 +115,16 @@
 												<button class="btn btn-flat waves-attach" id="mail-update"><span class="icon">check</span>&nbsp;</button>
 										</div>
 										<p class="card-heading"></p>
-										<p>当前设置：<code id="ajax-mail">{if $user->sendDailyMail==1}发送{else}不发送{/if}</code></p>
-										<div class="form-group form-group-label">
+										<p>当前设置：<code id="ajax-mail" data-default="mail">{if $user->sendDailyMail==1}发送{else}不发送{/if}</code></p>
+										<div class="form-group form-group-label control-highlight-custom dropdown">
 											<label class="floating-label" for="mail">发送设置</label>
-											<select id="mail" class="form-control maxwidth-edit">
-												<option value="1">发送</option>
-												<option value="0">不发送</option>
-											</select>
+											<button type="button" id="mail" class="form-control maxwidth-edit" data-toggle="dropdown" value="{$user->sendDailyMail}">
+												
+											</button>
+											<ul class="dropdown-menu" aria-labelledby="mail">
+												<li><a href="#" class="dropdown-option" onclick="return false;" val="1" data="mail">发送</a> </li>
+												<li><a href="#" class="dropdown-option" onclick="return false;" val="0" data="mail">不发送</a></li>
+											</ul>
 										</div>
 									</div>
 								</div>
@@ -186,14 +142,18 @@
 										<p><i class="icon icon-lg" aria-hidden="true">android</i><a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2">&nbsp;Android</a></p>
 										<p><i class="icon icon-lg" aria-hidden="true">tablet_mac</i><a href="https://itunes.apple.com/cn/app/google-authenticator/id388497605?mt=8">&nbsp;iOS</a></p>
 										<p>在没有测试完成绑定成功之前请不要启用。</p>
-										<p>当前设置：{if $user->ga_enable==1} 登录时要求验证 {else} 不要求 {/if}</p>
+										<p>当前设置：<code data-default="ga-enable">{if $user->ga_enable==1} 要求验证 {else} 不要求 {/if}</code></p>
 										<p>当前服务器时间：{date("Y-m-d H:i:s")}</p>
-										<div class="form-group form-group-label">
+										<div class="form-group form-group-label control-highlight-custom dropdown">
 											<label class="floating-label" for="ga-enable">验证设置</label>
-											<select id="ga-enable" class="form-control maxwidth-edit">
-												<option value="0">不要求</option>
-												<option value="1">要求验证</option>
-											</select>
+											<button type="button" id="ga-enable" class="form-control maxwidth-edit" data-toggle="dropdown" value="{$user->ga_enable}">
+												{* <option value="0">不要求</option>
+												<option value="1">要求验证</option> *}
+											</button>
+											<ul class="dropdown-menu" aria-labelledby="ga-enable">
+												<li><a href="#" class="dropdown-option" onclick="return false;" val="0" data="ga-enable">不要求</a> </li>
+												<li><a href="#" class="dropdown-option" onclick="return false;" val="1" data="ga-enable">要求验证</a></li>
+											</ul>
 										</div>
 
 
@@ -233,7 +193,7 @@
 										<p>适用于ACL/PAC/Surge</p>
 										<p>格式参看<a href="https://adblockplus.org/zh_CN/filters">撰写 Adblock Plus 过滤规则</a></p>
 										<p>IP 段请使用 |127.0.0.0/8 类似格式表示</p>
-										<div class="form-group form-group-label">
+										<div class="form-group form-group-label control-highlight-custom">
 											<label class="floating-label" for="pac">规则书写区</label>
 											<code contenteditable="true" class="form-control maxwidth-edit" id="pac">{$user->pac}</code>
 										</div>
@@ -297,6 +257,8 @@ $(".copy-text").click(function () {
 	$("#result").modal();
 	$("#msg").html("已复制到您的剪贴板。");
 });
+
+
 </script>
 
 <script>
@@ -364,7 +326,7 @@ $(".copy-text").click(function () {
                 url: "pacset",
                 dataType: "json",
                 data: {
-                   pac: $("#pac").val()
+                   pac: $("#pac").text()
                 },
                 success: function (data) {
                     if (data.ret) {

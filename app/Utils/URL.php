@@ -312,7 +312,7 @@ class URL
         foreach($items as $item) {
             $return_url .= URL::getItemUrl($item, $is_ss).($enter == 0 ? ' ' : "\n");
         }
-        if(Config::get('mergeSub')){
+        if(Config::get('mergeSub') and in_array($is_mu, array(0, 1))){
             $is_mu = $is_mu==0?1:0;
             $items = URL::getAllItems($user, $is_mu, $is_ss);
             foreach($items as $item) {
@@ -365,6 +365,8 @@ class URL
         $item['port'] = $node_explode[1];
         $item['id'] = $user->getUuid();
         $item['aid'] = $node_explode[2];
+        $item['net'] = "tcp";
+        $item['type'] = "none";
         if (count($node_explode) >= 4) {
             $item['net'] = $node_explode[3];
             if ($item['net'] == 'ws') {
@@ -372,18 +374,9 @@ class URL
             } else if ($item['net'] == 'tls') {
                 $item['tls'] = 'tls';
             }
-        } else {
-            $item['net'] = "tcp";
         }
-
-        if (count($node_explode) >= 5) {
-            if ($item['net'] == 'kcp' || $node_explode[4] == 'http') {
-                $item['type'] = $node_explode[4];
-            } else {
-                $item['type'] = "none";
-            }
-        } else {
-            $item['type'] = "none";
+        if (count($node_explode) >= 5 and in_array($item['net'], array("kcp", "http"))) {
+            $item['type'] = $node_explode[4];
         }
 
         if (count($node_explode) >= 6) {

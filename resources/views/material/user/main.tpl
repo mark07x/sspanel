@@ -327,6 +327,42 @@
 			width: 100%;
 		}
 
+		.btn-dl {
+			border-radius: 8px;
+			padding: 3px 12px 3px 10px;
+			margin-left: 8px;
+			margin-right: 8px;
+			background: #f5f5f5;
+			font-size: 13px;
+			border: 1px solid #f5f5f5;
+		}
+		.btn-dl i {
+			font-size: 22px;
+			position: relative;
+			top: 6px;
+			right: 2px;
+		}
+		.btn-dl i.icon-sm {
+            font-size: 18px;
+			top: 4px;
+		}
+		.quickadd p {
+			line-height: 22px;
+		}
+		a.btn-dl:focus,a.btn-dl:visited {
+			text-decoration: none;
+		}
+		.btn-dl:hover {
+			box-shadow: 2px 2px 10px #d6d6d6;
+			transition: .4s all;
+			border: 1px solid #b7b7b7;
+			text-decoration: none;
+		}
+		.copy-text {
+			cursor: pointer;
+		}
+		
+
 	</style>
 
     <style>
@@ -348,7 +384,7 @@
     display:block;
     content:"";
     width:calc(100% - 42px);
-    height:18px;
+    height:20px;
     top:10px;
     left:20px;
     border-radius:20px;
@@ -494,7 +530,7 @@
 					</a>
 					<ul class="dropdown-menu dropdown-menu-right">
 						<li>
-							<a class="padding-right-lg waves-attach" href="/user/"><span class="icon icon-lg margin-right">account_box</span>用户中心</a>
+							<a class="waves-attach" href="/user/"><span class="icon icon-lg margin-right">account_box</span>用户中心</a>
 						</li>
 
 						<li>

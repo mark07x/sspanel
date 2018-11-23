@@ -16,6 +16,129 @@
 			<section class="content-inner margin-top-no">
 				<div class="ui-card-wrap">
 
+						<div class="col-xx-12 col-xs-6 col-lg-3">
+								<div class="card user-info">
+									<div class="user-info-main">
+										<div class="nodemain">
+											<div class="nodehead node-flex">
+												<div class="nodename">帐号等级</div>
+												<a href="/user/shop" class="card-tag tag-orange">升级</a>
+											</div>
+											<div class="nodemiddle node-flex">
+												<div class="nodetype">
+													{if $user->class!=0}
+													<dd>VIP{$user->class}</dd>
+													{else}
+													<dd>普通用户</dd>
+													{/if}
+												</div>
+											</div>
+										</div>
+										<div class="nodestatus">
+											<div class="infocolor-red">
+												<i class="icon icon-md t4-text">stars</i>
+											</div>
+										</div>
+									</div>
+									<div class="user-info-bottom">
+										<div class="nodeinfo node-flex">
+										{if $user->class!=0}
+											<span><i class="icon icon-md">add_circle</i>到期流量清空</span>
+										{else}
+										    <span><i class="icon icon-md">add_circle</i>升级解锁VIP节点</span>
+										{/if}
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xx-12 col-xs-6 col-lg-3">
+								<div class="card user-info">
+									<div class="user-info-main">
+										<div class="nodemain">
+											<div class="nodehead node-flex">
+												<div class="nodename">余额</div>
+												<a href="/user/code" class="card-tag tag-green">充值</a>
+											</div>
+											<div class="nodemiddle node-flex">
+												<div class="nodetype">
+													{$user->money} CNY
+												</div>
+											</div>
+										</div>
+										<div class="nodestatus">
+											<div class="infocolor-green">
+												<i class="icon icon-md">account_balance_wallet</i>
+											</div>
+										</div>
+									</div>
+									<div class="user-info-bottom">
+										<div class="nodeinfo node-flex">
+											<span href="/user/shop"><i class="icon icon-md">attach_money</i>账户内可用余额</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xx-12 col-xs-6 col-lg-3">
+								<div class="card user-info">
+									<div class="user-info-main">
+										<div class="nodemain">
+											<div class="nodehead node-flex">
+												<div class="nodename">在线设备数</div>
+											</div>
+											<div class="nodemiddle node-flex">
+												<div class="nodetype">
+													{if $user->node_connector!=0}
+													<dd>{$user->online_ip_count()} / {$user->node_connector}</dd>
+													{else}
+													<dd>{$user->online_ip_count()} / 不限制 </dd>
+													{/if}
+												</div>
+											</div>
+										</div>
+										<div class="nodestatus">
+											<div class="infocolor-yellow">
+												<i class="icon icon-md">phonelink</i>
+											</div>
+										</div>
+									</div>
+									<div class="user-info-bottom">
+										<div class="nodeinfo node-flex">
+											<span><i class="icon icon-md">donut_large</i>在线设备/设备限制数</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xx-12 col-xs-6 col-lg-3">
+								<div class="card user-info">
+									<div class="user-info-main">
+										<div class="nodemain">
+											<div class="nodehead node-flex">
+												<div class="nodename">端口速率</div>
+											</div>
+											<div class="nodemiddle node-flex">
+												<div class="nodetype">
+													{if $user->node_speedlimit!=0}
+													<dd><code>{$user->node_speedlimit}</code>Mbps</dd>
+													{else}
+													<dd>无限制</dd>
+													{/if}
+												</div>
+											</div>
+										</div>
+										<div class="nodestatus">
+											<div class="infocolor-blue">
+												<i class="icon icon-md">settings_input_component</i>
+											</div>
+										</div>
+									</div>
+									<div class="user-info-bottom">
+										<div class="nodeinfo node-flex">
+											<span><i class="icon icon-md">signal_cellular_alt</i>账户最高下行网速</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
 						<div class="col-xx-12 col-sm-8">
 
 							<div class="card">
@@ -43,7 +166,7 @@
 							</div>
 
 
-							<div class="card">
+							<div class="card quickadd">
 								<div class="card-main">
 									<div class="card-inner margin-bottom-no">
 										<p class="card-heading"><i class="icon icon-md">phonelink</i> 快速添加V2Ray节点</p>
@@ -80,18 +203,12 @@
 									<div class="card-inner margin-bottom-no">
 										<p class="card-heading"><i class="icon icon-md">account_circle</i>账号使用情况</p>
 										<dl class="dl-horizontal">
-											<p><dt>帐号等级</dt>
-                                              {if $user->class!=0}
-											<dd><i class="icon icon-md t4-text">stars</i>&nbsp;<code>VIP{$user->class}</code></dd>
-                                          {else}
-                                              <dd><i class="icon icon-md t4-text">stars</i>&nbsp;免费</dd>
-                                              {/if}
-                                          </p>
+
 
 											<p><dt>等级过期时间</dt>
                                               {if $user->class_expire!="1989-06-04 00:05:00"}
 											<dd><i class="icon icon-md">event</i>&nbsp;{$user->class_expire}</dd>
-                                          {else}
+                                              {else}
                                               <dd><i class="icon icon-md">event</i>&nbsp;不过期</dd>
                                               {/if}
 											</p>
@@ -112,28 +229,13 @@
 											  <span class="label-account-expire">天</span>
                                            </p>
 
-											<p><dt>速度限制</dt>
-											{if $user->node_speedlimit!=0}
-											<dd><i class="icon icon-md">settings_input_component</i>&nbsp;<code>{$user->node_speedlimit}</code>Mbps</dd>
-											{else}
-											<dd><i class="icon icon-md">settings_input_component</i>&nbsp;不限速</dd>
-											{/if}</p>
-                                           <p><dt>在线设备数</dt>
-										    {if $user->node_connector!=0}
-											<dd><i class="icon icon-md">phonelink</i>&nbsp;{$user->online_ip_count()} / {$user->node_connector}</dd>
-											{else}
-                                            <dd><i class="icon icon-md">phonelink</i>&nbsp;{$user->online_ip_count()} / 不限制 </dd>
-											{/if}
-											</p>
-											<p><dt>余额</dt>
-											<dd><i class="icon icon-md">attach_money</i>&nbsp;<code>{$user->money}</code> CNY</dd></p>
 											<p><dt>上次使用</dt>
                                               {if $user->lastSsTime()!="从未使用喵"}
 											<dd><i class="icon icon-md">event</i>&nbsp;{$user->lastSsTime()}</dd>
-                                          {else}
-                                          <dd><i class="icon icon-md">event</i>&nbsp;从未使用</dd>
-                                          {/if}</p>
-                                          <p><dt>上次签到时间：</dt>
+                                              {else}
+                                              <dd><i class="icon icon-md">event</i>&nbsp;从未使用</dd>
+                                              {/if}</p>
+                                            <p><dt>上次签到时间：</dt>
                                             <dd><i class="icon icon-md">event</i>&nbsp;{$user->lastCheckInTime()}</dd></p>
 
 
@@ -227,21 +329,21 @@
 
 										<div class="progressbar">
 	                                         <div class="before"></div>
-	                                         <div class="bar tuse color3" style="width:calc({($user->u+$user->d-$user->last_day_t)/$user->transfer_enable*100}% - 44px);"><span></span></div>
+	                                         <div class="bar tuse color3" style="width:calc({($user->u+$user->d-$user->last_day_t)/$user->transfer_enable*100}% - 46px);"><span></span></div>
 											 <div class="label-flex">
 												<div class="label la-top"><div class="bar ard color3"><span></span></div>今日已用 <code>{$user->TodayusedTraffic()}</code></div>
 											 </div>
 										</div>
 										<div class="progressbar">
 										    <div class="before"></div>
-										    <div class="bar ard color2" style="width:calc({$user->last_day_t/$user->transfer_enable*100}% - 44px);"><span></span></div>
+										    <div class="bar ard color2" style="width:calc({$user->last_day_t/$user->transfer_enable*100}% - 46px);"><span></span></div>
 										    <div class="label-flex">
 										       <div class="label la-top"><div class="bar ard color2"><span></span></div>过去已用 <code>{$user->LastusedTraffic()}</code></div>
 										    </div>
 								        </div>
 										<div class="progressbar">
 											<div class="before"></div>
-											<div class="bar remain color" style="width:calc({($user->transfer_enable-($user->u+$user->d))/$user->transfer_enable*100}% - 44px);"><span></span></div>
+											<div class="bar remain color" style="width:calc({($user->transfer_enable-($user->u+$user->d))/$user->transfer_enable*100}% - 46px);"><span></span></div>
 											<div class="label-flex">
 											   <div class="label la-top"><div class="bar ard color"><span></span></div>剩余流量 <code>{$user->unusedTraffic()}</code></div>
 											</div>

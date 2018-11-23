@@ -4,7 +4,6 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1"></script>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
-<div class="tiphidden"></div>
 {function displayV2rayNode node=null}
 	{assign var=server_explode value=";"|explode:$node['server']}
 	<div class="tiptitle">
@@ -64,16 +63,18 @@
 								</div>
 							</div>
 						
-                    <div class="card-row">
+                    <div class="node-cardgroup">
                         {$class=-1}
 						{foreach $nodes as $node}
 						{if $node['class']!=$class}
-						    {$class=$node['class']}
+							{$class=$node['class']}
+							{if !$node@first}</div>{/if}
 							<div class="nodetitle">
-								<div>
-								    <span>{if $class == 0}普通{else}VIP {$node['class']} {/if}用户节点</span>	
-								</div>
-							</div>	
+								<a class="waves-effect waves-button" data-toggle="collapse" href="#cardgroup{$class}" aria-expanded="true" aria-controls="cardgroup{$class}">
+								    <span>{if $class == 0}普通{else}VIP {$node['class']} {/if}用户节点</span><i class="material-icons">expand_more</i>
+								</a>
+							</div>
+							<div class="card-row collapse in" id="cardgroup{$class}">
 						{/if}
 						<div class="node-card node-flex" cardindex="{$node@index}">
                             <div class="nodemain">
@@ -86,7 +87,7 @@
                                     <div class="nodetype">{$node['status']}</div>
                                 </div>
                                 <div class="nodeinfo node-flex">
-                                    <div class="nodetraffic node-flex"><i class="material-icons node-icon">equalizer</i><span>{if $node['traffic_limit']>0}{$node['traffic_used']}/{$node['traffic_limit']}GB{else}N/A{/if}</span></div>
+                                    <div class="nodetraffic node-flex"><i class="material-icons node-icon">equalizer</i><span>{if $node['traffic_limit']>0}{$node['traffic_used']}/{$node['traffic_limit']}GB{else}{$node['traffic_used']}GB{/if}</span></div>
                                     <div class="nodecheck node-flex">
                                         <i class="material-icons node-icon">network_check</i><span>x{$node['traffic_rate']}</span>
                                     </div>
@@ -100,7 +101,7 @@
 							</div>
 
 						</div>
-						<div class="node-tip" tipindex="{$node@index}">
+						<div class="node-tip cust-model" tipindex="{$node@index}">
 								{if $node['class'] > $user->class}
 									<p class="card-heading" align="center"><b> <i class="icon icon-lg">visibility_off</i>
 										{$user->user_name}，您无查看当前等级VIP节点的权限，如需购买VIP请<a href="/user/shop">点击这里</a>。</b></p>
@@ -166,6 +167,7 @@
 								{/if}
 							</div>
 						{$point_node=null}
+						{if $node@last}</div>{/if}
 						{/foreach}
 					</div>
 
@@ -218,7 +220,7 @@
 														{if $node['traffic_limit']>0}
 															<span class="node-band">{$node['traffic_used']}/{$node['traffic_limit']}</span>
 														{else}
-															N/A
+															{$node['traffic_used']}GB
 														{/if}
 														| <span class="node-icon"><i class="icon icon-lg">network_check</i></span>
 														<span class="node-tr">{$node['traffic_rate']} 倍率</span> 
@@ -388,13 +390,22 @@
 		$("#result").modal();
 		$("#msg").html("已复制，请进入软件添加。");
 	});
-	{literal}
 
+	{literal}
     ;(function(){
 		'use strict'
+	
+	$('a[href^="#cardgroup"]').click(function(){
+		var rotatearrow = $(this).find('i');
+		if (!rotatearrow.hasClass('arrow-rotate')) {
+			rotatearrow.addClass('arrow-rotate');
+		} else {		
+			rotatearrow.removeClass('arrow-rotate');
+		}
+	});
 
 	var nodeDefaultUI = localStorage.getItem("tempUInode");
-	var elNodeCard = $(".card-row");
+	var elNodeCard = $(".node-cardgroup");
 	var elNodeTable = $(".node-table");
 	nodeDefaultUI = JSON.parse(nodeDefaultUI);
 	if (!nodeDefaultUI) {
@@ -443,34 +454,37 @@
 		};
 		defaultUI = JSON.stringify(defaultUI);
 		localStorage.setItem("tempUInode",defaultUI);
-    });
-
-	var tipHidden = $(".tiphidden");
-	$(".node-card").click(function (){
-		var windowWidth = $(window).width();
-		var cardSize = $(this).css("grid-column-end");
-		var tipID = $(this).attr("cardindex");
-		var tip = $(".node-tip[tipindex=" + tipID + "]");
-		tipHidden.css({"height":"100vh","width":"100vw"});
-		tip.css("z-index","3");
-		setTimeout(function() {
-           tip.addClass("tip-down");
-		},200);
-    });
-
-	tipHidden.click(function(){
-        tipHidden.css({"height":"0","width":"0"});
-		$(".node-tip.tip-down").removeClass("tip-down");
-		var hiddenOver = setTimeout(function(){
-			$(".node-tip").css("z-index","-1");
-		},520);
-		clearTimeout(hiddenOver);
 	});
+	
+	let buttongroup = document.querySelectorAll('.node-card');
+	let modelgroup = document.querySelectorAll('.node-tip');
+	for (let i=0;i<buttongroup.length;i++) {
+		custModal(buttongroup[i],modelgroup[i]);
+	}
+
+	// var tipHidden = $(".tiphidden");
+	// $(".node-card").click(function (){
+	// 	var windowWidth = $(window).width();
+	// 	var cardSize = $(this).css("grid-column-end");
+	// 	var tipID = $(this).attr("cardindex");
+	// 	var tip = $(".node-tip[tipindex=" + tipID + "]");
+	// 	tipHidden.css({"height":"100vh","width":"100vw"});
+	// 	tip.css("z-index","3");
+	// 	setTimeout(function() {
+    //        tip.addClass("tip-down");
+	// 	},200);
+    // });
+
+	// tipHidden.click(function(){
+    //     tipHidden.css({"height":"0","width":"0"});
+	// 	$(".node-tip.tip-down").removeClass("tip-down");
+	// 	var hiddenOver = setTimeout(function(){
+	// 		$(".node-tip").css("z-index","-1");
+	// 	},520);
+	// 	clearTimeout(hiddenOver);
+	// });
 
     })();
 	{/literal}
  
-   
-
-	
 </script>
