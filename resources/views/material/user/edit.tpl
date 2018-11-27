@@ -65,6 +65,148 @@
 								<div class="card-inner">
 									<div class="card-inner">
 										<div class="cardbtn-edit">
+												<div class="card-heading">加密方式修改</div>
+												<button class="btn btn-flat waves-attach" id="method-update"><span class="icon">check</span>&nbsp;</button>
+										</div>
+										<p>注意：SS/SSD/SSR 支持的加密方式有所不同，请根据实际情况来进行选择</p>
+										<p>当前加密方式：<code id="ajax-user-method" data-default="method">{$user->method}</code></p>
+										<div class="form-group form-group-label control-highlight-custom dropdown">
+											<label class="floating-label" for="method">加密方式</label>
+											<button id="method" class="form-control maxwidth-edit" data-toggle="dropdown" value="{$user->method}">
+												[{if URL::CanMethodConnect($user->method) == 2}SS/SSD{else}SS/SSR{/if} 可连接]
+											</button>
+											<ul class="dropdown-menu" aria-labelledby="method">
+												{$method_list = $config_service->getSupportParam('method')}
+												{foreach $method_list as $method}
+												<li><a href="#" class="dropdown-option" onclick="return false;" val="{$method}" data="method">[{if URL::CanMethodConnect($method) == 2}SS/SSD{else}SS/SSR{/if} 可连接] {$method}</a></li>
+												{/foreach}
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>  
+
+						<div class="card margin-bottom-no">
+							<div class="card-main">
+								<div class="card-inner">
+									<div class="card-inner">
+										<div class="cardbtn-edit">
+												<div class="card-heading">联络方式修改</div>
+												<button class="btn btn-flat waves-attach" id="wechat-update"><span class="icon">check</span>&nbsp;</button>
+										</div>
+										<p>当前联络方式：
+										<code id="ajax-im" data-default="imtype">
+										{if $user->im_type==1}
+										微信
+										{/if}
+
+										{if $user->im_type==2}
+										QQ
+										{/if}
+
+										{if $user->im_type==3}
+										Google+
+										{/if}
+
+										{if $user->im_type==4}
+										Telegram
+										{/if}
+										{$user->im_value}
+										</code>
+										</p>
+										<div class="form-group form-group-label control-highlight-custom dropdown">
+											<label class="floating-label" for="imtype">选择您的联络方式</label>
+											<button class="form-control maxwidth-edit" id="imtype" data-toggle="dropdown" value="{$user->im_type}">
+
+											</button>
+											<ul class="dropdown-menu" aria-labelledby="imtype">
+                                                <li><a href="#" class="dropdown-option" onclick="return false;" val="1" data="imtype">微信</a></li>
+                                                <li><a href="#" class="dropdown-option" onclick="return false;" val="2" data="imtype">QQ</a></li>
+                                                <li><a href="#" class="dropdown-option" onclick="return false;" val="3" data="imtype">Facebook</a></li>
+                                                <li><a href="#" class="dropdown-option" onclick="return false;" val="4" data="imtype">Telegram</a></li>
+											</ul>
+										</div>
+
+										<div class="form-group form-group-label">
+											<label class="floating-label" for="wechat">在这输入联络方式账号</label>
+											<input class="form-control maxwidth-edit" id="wechat" type="text">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
+						<div class="card margin-bottom-no">
+							<div class="card-main">
+								<div class="card-inner">
+									<div class="card-inner">
+										<div class="cardbtn-edit">
+												<div class="card-heading">协议&混淆设置</div>
+												<button class="btn btn-flat waves-attach" id="ssr-update"><span class="icon">check</span>&nbsp;</button>
+										</div>
+										<p>当前协议：<code id="ajax-user-protocol" data-default="protocol">{$user->protocol}</code></p>
+										<p>注意1：如果需要兼容 SS/SSD 请设置为 origin 或选择带_compatible的兼容选项</p>
+										<p>注意3：auth_chain 系为实验性协议，可能造成不稳定或无法使用，开启前请询问是否支持</p>
+										<div class="form-group form-group-label control-highlight-custom dropdown">
+											<label class="floating-label" for="protocol">协议</label>
+											<button id="protocol" class="form-control maxwidth-edit" data-toggle="dropdown" value="{$user->protocol}">
+												[{if URL::CanProtocolConnect($user->protocol) == 3}SS/SSD/SSR{else}SSR{/if} 可连接]
+											</button>
+											<ul class="dropdown-menu" aria-labelledby="protocol">
+												{$protocol_list = $config_service->getSupportParam('protocol')}
+												{foreach $protocol_list as $protocol}
+												<li><a href="#" class="dropdown-option" onclick="return false;" val="{$protocol}" data="protocol">[{if URL::CanProtocolConnect($protocol) == 3}SS/SSD/SSR{else}SSR{/if} 可连接] {$protocol}</a></li>
+												{/foreach}
+											</ul>
+										</div>
+
+									</div>
+
+									<div class="card-inner">
+										<p>当前混淆方式：<code id="ajax-user-obfs" data-default="obfs">{$user->obfs}</code></p>
+										<p>注意1：如果需要兼容 SS/SSD 请设置为 plain 或选择带_compatible的兼容选项</p>
+										<p>注意2：SS/SSD 和 SSR 支持的混淆类型有所不同，simple_obfs_* 为 SS/SSD 的混淆方式，其他为 SSR 的混淆方式</p>
+										<p>注意3：如果使用 SS/SSD 作为客户端，请确保自己知道如何下载并使用混淆插件</p>
+										<div class="form-group form-group-label control-highlight-custom dropdown">
+											<label class="floating-label" for="obfs">混淆方式</label>
+											<button id="obfs" class="form-control maxwidth-edit" data-toggle="dropdown" value="{$user->obfs}">
+												[{if URL::CanObfsConnect($user->obfs) >= 3}SS/SSD/SSR{elseif URL::CanObfsConnect($user->obfs) == 1}SSR{else}SS/SSD{/if} 可连接]
+											</button>
+											<ul class="dropdown-menu" aria-labelledby="obfs">
+											{$obfs_list = $config_service->getSupportParam('obfs')}
+											{foreach $obfs_list as $obfs}
+											<li><a href="#" class="dropdown-option" onclick="return false;" val="{$obfs}" data="obfs">[{if URL::CanObfsConnect($obfs) >= 3}SS/SSD/SSR{else}{if URL::CanObfsConnect($obfs) == 1}SSR{else}SS/SSD{/if}{/if} 可连接] {$obfs}</a></li>
+											{/foreach}
+										    </ul>
+										</div>
+									</div>
+
+									<div class="card-inner">
+										<p>当前混淆参数：<code id="ajax-user-obfs-param">{$user->obfs_param}</code></p>
+										<div class="form-group form-group-label">
+											<label class="floating-label" for="obs-param">在这输入混淆参数</label>
+											<input class="form-control maxwidth-edit" id="obfs-param" type="text">
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>  
+
+
+
+
+
+
+
+						<div class="card margin-bottom-no">
+							<div class="card-main">
+								<div class="card-inner">
+									<div class="card-inner">
+										<div class="cardbtn-edit">
 												<div class="card-heading">主题修改</div>
 												<button class="btn btn-flat waves-attach" id="theme-update"><span class="icon">check</span>&nbsp;</button>
 										</div>
@@ -147,8 +289,7 @@
 										<div class="form-group form-group-label control-highlight-custom dropdown">
 											<label class="floating-label" for="ga-enable">验证设置</label>
 											<button type="button" id="ga-enable" class="form-control maxwidth-edit" data-toggle="dropdown" value="{$user->ga_enable}">
-												{* <option value="0">不要求</option>
-												<option value="1">要求验证</option> *}
+
 											</button>
 											<ul class="dropdown-menu" aria-labelledby="ga-enable">
 												<li><a href="#" class="dropdown-option" onclick="return false;" val="0" data="ga-enable">不要求</a> </li>

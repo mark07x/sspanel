@@ -11,8 +11,7 @@
 	<!-- css -->
 	<link href="/theme/material/css/base.min.css" rel="stylesheet">
 	<link href="/theme/material/css/project.min.css" rel="stylesheet">
-	<link href="https://fonts.loli.net/css?family=Roboto:300,300italic,400,400italic,500,500italic" rel="stylesheet">
-	<link href="https://fonts.loli.net/css?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.loli.net/css?family=Roboto:300,300italic,400,400italic,500,500italic|Material+Icons" rel="stylesheet">
 
 	<!-- jquery -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1"></script>
@@ -372,21 +371,23 @@
 	display:block;
     width:90%;
     height:20px;
-    padding:10px 20px;
     border-bottom:1px solid rgba(255,255,255,0.25);
     border-radius:16px;
 	margin:40px auto;
 	margin-top: 60px;
+}
+.progressbar:first-of-type {
+	margin-top: 70px;
 }
 
 .progressbar .before{
     position:absolute;
     display:block;
     content:"";
-    width:calc(100% - 42px);
+    width:calc(100% + 4px);
     height:20px;
-    top:10px;
-    left:20px;
+    left:-2px;
+	right: 1px;
     border-radius:20px;
     background:#fff;
     box-shadow: 0px 0px 2px 0px rgba(180, 180, 180, .85);
@@ -397,10 +398,9 @@
 	display:block;
 	width:0px;
 	height:16px;
-	top:12px;
-	left:22px;
+	top:2px;
+	left:0px;
 	background:rgb(126,234,25);
-
 	border-radius:16px;
 	box-shadow:0px 0px 12px 0px rgba(126, 234, 25, 1),inset 0px 1px 0px 0px rgba(255, 255, 255, 0.45),inset 1px 0px 0px 0px rgba(255, 255, 255, 0.25),inset -1px 0px 0px 0px rgba(255, 255, 255, 0.25);
 	overflow:hidden;
@@ -490,11 +490,15 @@
     animation:sparkle 1500ms linear infinite;
 	opacity:0.4;
 }
+
+.label.la-top code,.progressbar .label {
+    display:flex;
+    align-items: center;
+}
 .progressbar .label {
 	font-family:'Aldrich', sans-serif;
 	position:relative;
-	display:block;
-	width:30%;
+	width: 100%;
 	height:30px;
 	line-height:30px;
 	bottom:40px;
@@ -506,7 +510,14 @@
 	color:#252525;
     filter:dropshadow(color=#000000, offx=0, offy=-1);
 }
-
+.label.la-top code {
+    position: absolute;
+	right: 0;
+	top: 6px;
+}
+.traffic-info {
+	margin-top: 6px;
+}
 
 	</style>
 

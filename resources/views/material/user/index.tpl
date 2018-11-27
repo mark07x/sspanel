@@ -161,7 +161,6 @@
 										{/if}
 										{/if}
 									</div>
-
 								</div>
 							</div>
 
@@ -329,23 +328,23 @@
 
 										<div class="progressbar">
 	                                         <div class="before"></div>
-	                                         <div class="bar tuse color3" style="width:calc({($user->u+$user->d-$user->last_day_t)/$user->transfer_enable*100}% - 46px);"><span></span></div>
+	                                         <div class="bar tuse color3" style="width:calc({($user->u+$user->d-$user->last_day_t)/$user->transfer_enable*100}%);"><span></span></div>
 											 <div class="label-flex">
-												<div class="label la-top"><div class="bar ard color3"><span></span></div>今日已用 <code>{$user->TodayusedTraffic()}</code></div>
+												<div class="label la-top"><div class="bar ard color3"><span></span></div><span class="traffic-info">今日已用</span><code class="card-tag tag-red">{$user->TodayusedTraffic()}</code></div>
 											 </div>
 										</div>
 										<div class="progressbar">
 										    <div class="before"></div>
-										    <div class="bar ard color2" style="width:calc({$user->last_day_t/$user->transfer_enable*100}% - 46px);"><span></span></div>
+										    <div class="bar ard color2" style="width:calc({$user->last_day_t/$user->transfer_enable*100}%);"><span></span></div>
 										    <div class="label-flex">
-										       <div class="label la-top"><div class="bar ard color2"><span></span></div>过去已用 <code>{$user->LastusedTraffic()}</code></div>
+										       <div class="label la-top"><div class="bar ard color2"><span></span></div><span class="traffic-info">过去已用</span><code class="card-tag tag-orange">{$user->LastusedTraffic()}</code></div>
 										    </div>
 								        </div>
 										<div class="progressbar">
 											<div class="before"></div>
-											<div class="bar remain color" style="width:calc({($user->transfer_enable-($user->u+$user->d))/$user->transfer_enable*100}% - 46px);"><span></span></div>
+											<div class="bar remain color" style="width:calc({($user->transfer_enable-($user->u+$user->d))/$user->transfer_enable*100}%);"><span></span></div>
 											<div class="label-flex">
-											   <div class="label la-top"><div class="bar ard color"><span></span></div>剩余流量 <code>{$user->unusedTraffic()}</code></div>
+											   <div class="label la-top"><div class="bar ard color"><span></span></div><span class="traffic-info">剩余流量</span><code class="card-tag tag-green" id="remain">{$user->unusedTraffic()}</code></div>
 											</div>
 									   </div>
 
@@ -357,38 +356,6 @@
 
 								</div>
 							</div>
-
-
-						{if $enable_duoshuo=='true'}
-
-							<div class="card">
-								<div class="card-main">
-									<div class="card-inner margin-bottom-no">
-										<p class="card-heading">讨论区</p>
-											<div class="ds-thread" data-thread-key="0" data-title="index" data-url="{$baseUrl}/user/"></div>
-											<script type="text/javascript">
-											var duoshuoQuery = {
-
-											short_name:"{$duoshuo_shortname}"
-
-
-											};
-												(function() {
-													var ds = document.createElement('script');
-													ds.type = 'text/javascript';ds.async = true;
-													ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-													ds.charset = 'UTF-8';
-													(document.getElementsByTagName('head')[0]
-													 || document.getElementsByTagName('body')[0]).appendChild(ds);
-												})();
-											</script>
-									</div>
-
-								</div>
-							</div>
-
-						{/if}
-
 						{include file='dialog.tpl'}
 
 					</div>
@@ -505,6 +472,8 @@ window.onload = function() {
                     $("#checkin-btn").html(checkedmsgGE);
 					$("#result").modal();
                     $("#msg").html(data.msg);
+					$('#remain').html(data.traffic);
+				    $('.bar.remain.color').css('width',(data.unflowtraffic-({$user->u}+{$user->d}))/data.unflowtraffic*100+'%');
                 },
                 error: function (jqXHR) {
 					$("#result").modal();
@@ -526,6 +495,8 @@ $(document).ready(function () {
 				$("#checkin-btn").html(checkedmsgGE);
 				$("#result").modal();
 				$("#msg").html(data.msg);
+				$('#remain').html(data.traffic);
+				$('.bar.remain.color').css('width',(data.unflowtraffic-({$user->u}+{$user->d}))/data.unflowtraffic*100+'%');
 			},
 			error: function (jqXHR) {
 				$("#result").modal();
@@ -578,6 +549,8 @@ var handlerPopup = function (captchaObj) {
 				$("#checkin-btn").html(checkedmsgGE);
 				$("#result").modal();
 				$("#msg").html(data.msg);
+				$('#remain').html(data.traffic);
+				$('.bar.remain.color').css('width',(data.unflowtraffic-({$user->u}+{$user->d}))/data.unflowtraffic*100+'%');
 			},
 			error: function (jqXHR) {
 				$("#result").modal();
