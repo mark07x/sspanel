@@ -118,20 +118,19 @@ class User extends Model
     {
         $uid = $this->attributes['id'];
         $code = new InviteCode();
-        $code->code = Tools::genRandomChar(32);
-        $code->user = $uid;
+		while(true){
+			$temp_code=Tools::genRandomChar(4);
+			if(InviteCode::where('user_id', $uid)->count()==0){
+				break;
+			}
+		}
+        $code->code = $temp_code;
+        $code->user_id = $uid;
         $code->save();
     }
 
     public function getUuid() {
         return Uuid::uuid3(Uuid::NAMESPACE_DNS, $this->attributes['id']. '|' .$this->attributes['passwd'])->toString();
-    }
-
-    public function addManyInviteCodes($num)
-    {
-        for ($i = 0; $i < $num; $i++) {
-            $this->addInviteCode();
-        }
     }
 
     public function trafficUsagePercent()

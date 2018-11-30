@@ -1,15 +1,4 @@
-
-
-
-
-
 {include file='user/main.tpl'}
-
-
-
-
-
-
 
 	<main class="content">
 		<div class="content-header ui-content-header">
@@ -42,7 +31,7 @@
 					{if $user->class!=0}
 
 					{if $user->invite_num!=-1}
-					<div class="col-xx-12 col-lg-7">
+					<div class="col-xx-12 {if $config['invite_price']>=0}col-lg-7{/if}">
 						<div class="card margin-bottom-no card-invite">
 							<div class="card-main">
 								<div class="card-inner">
@@ -172,7 +161,6 @@
 </script>
 
 <script>
-{include file='table/js_1.tpl'}
 
 $("#buy-invite").click(function () {
     $.ajax({
@@ -197,10 +185,6 @@ $("#buy-invite").click(function () {
         	$("#msg").html(data.msg+"     出现了一些错误。");
         }
     })
-});
-
-$(document).ready(function(){
- 	{include file='table/js_2.tpl'}
 });
 
 </script>
