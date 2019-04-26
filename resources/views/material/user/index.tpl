@@ -183,6 +183,7 @@
 											<div class="tab-pane fade active in" id="all_v2ray_info">
 												{$v2_url_all = URL::getAllVMessUrl($user)}
 												<a class="copy-text" data-clipboard-text="{$v2_url_all}">点击这里复制全部 VMess 链接</a>
+												<br>
 												<a class="copy-text" data-clipboard-text="{$subUrl}{$ssr_sub_token}?mu=3">点击这里复制订阅链接</a>
 											</div>
 											<div class="tab-pane fade" id="all_v2ray_announcement">
